@@ -10,7 +10,7 @@ begin
   require 'jeweler'
   Jeweler::Tasks.new do |gem|
     # gem is a Gem::Specification... see http://docs.rubygems.org/read/chapter/20 for more options
-    gem.name = 'livejournal'
+    gem.name = 'vk_livejournal'
     gem.summary = 'Module for interacting with livejournal'
     gem.description = %q{LiveJournal module.  Post to livejournal, retrieve friends lists, edit entries, sync journal to an offline database.}
     gem.email = 'romanbsd@yahoo.com'
@@ -36,4 +36,4 @@ Rake::TestTask.new :test do |t|
   t.test_files = FileList['test/*.rb']
 end
 
-# vim: set ts=2 sw=2 et :
+# vim: set ts=2 sw=:2 et :
