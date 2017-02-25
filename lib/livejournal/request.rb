@@ -57,13 +57,14 @@ module LiveJournal
 
     # Superclass for all LiveJournal requests.
     class Req #:nodoc:
-      def initialize(user, mode)
+      def initialize(user, mode, server = nil)
+        @server = server || (user && user.server) || LiveJournal::DEFAULT_SERVER
         @user = user
         @request = { 'mode'          => mode,
                      'clientversion' => 'Ruby',
                      'ver'           => 1 }
         if user
-          challenge = GetChallenge.new.run
+          challenge = GetChallenge.new(@server).run
           response = Digest::MD5.hexdigest(challenge +
                        Digest::MD5.hexdigest(user.password))
           @request.update({ 'user'           => user.username,
@@ -81,7 +82,9 @@ module LiveJournal
       def dryrun!; @dryrun = true; end
 
       def run
-        h = Net::HTTP.new('www.livejournal.com')
+        uri = URI.parse(@server.url)
+        h = Net::HTTP.new(uri.host, uri.port)
+        h.use_ssl = uri.scheme == "https"
         h.set_debug_output $stderr if @verbose
         request = @request.collect { |key, value|
           "#{CGI.escape(key)}=#{CGI.escape(value.to_s)}"
@@ -125,8 +128,8 @@ module LiveJournal
     # Used for LiveJournal's challenge-response based authentication,
     # and used by ljrb for all requests.
     class GetChallenge < Req
-      def initialize
-        super(nil, 'getchallenge')
+      def initialize(server = nil)
+        super(nil, 'getchallenge', server)
       end
       # Returns the challenge.
       def run
