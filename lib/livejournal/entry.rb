@@ -195,9 +195,8 @@ module LiveJournal
     end
 
     def url(user)
-      raise UnimplementedError, "only works for lj.com" unless user.server == LiveJournal::DEFAULT_SERVER
-      journal = user.journal.gsub(/_/, '-')
-      "http://#{journal}.livejournal.com/#{display_itemid}.html"
+      #raise NotImplementedError, "only works for lj.com" unless user.server == LiveJournal::DEFAULT_SERVER
+      "#{user.journal_url}/#{display_itemid}.html"
     end
 
     # Render LJ markup to an HTML simulation of what is displayed on LJ

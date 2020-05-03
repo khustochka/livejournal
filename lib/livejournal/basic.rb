@@ -31,6 +31,27 @@ module LiveJournal
       @name = name
       @url = url
     end
+
+    def host
+      uri.host
+    end
+
+    def port
+      uri.port
+    end
+
+    def use_ssl
+      uri.scheme == "https"
+    end
+
+    def ==(server)
+      host == server.host
+    end
+
+    private
+    def uri
+      URI.parse(url)
+    end
   end
   DEFAULT_SERVER = Server.new("LiveJournal.com", "http://www.livejournal.com")
 
@@ -58,6 +79,18 @@ module LiveJournal
     end
     def to_s
       "#{@username}: '#{@fullname}'"
+    end
+    def canonical_journal_name
+      journal.tr("_", "-")
+    end
+    def journal_url
+      klass = server.use_ssl ? URI::HTTPS : URI::HTTP
+      host = server.host.gsub(/^www\./, "")
+      if journal[0] == "_"
+        klass.build(host: "users.#{host}", port: server.port, path: "/" + canonical_journal_name).to_s
+      else
+        klass.build(host: "#{canonical_journal_name}.#{host}", port: server.port).to_s
+      end
     end
   end
 end

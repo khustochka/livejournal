@@ -82,9 +82,8 @@ module LiveJournal
       def dryrun!; @dryrun = true; end
 
       def run
-        uri = URI.parse(@server.url)
-        h = Net::HTTP.new(uri.host, uri.port)
-        h.use_ssl = uri.scheme == "https"
+        h = Net::HTTP.new(@server.host, @server.port)
+        h.use_ssl = @server.use_ssl
         h.set_debug_output $stderr if @verbose
         request = @request.collect { |key, value|
           "#{CGI.escape(key)}=#{CGI.escape(value.to_s)}"
