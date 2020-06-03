@@ -163,8 +163,7 @@ module LiveJournal
         when 'F'; @screening = :nonfriends
         when 'N'; @screening = :none
         else
-          raise LiveJournalException,
-            "unknown opt_screening value #{value.inspect}"
+          raise "Unknown opt_screening value: #{value.inspect}"
         end
       when 'picture_keyword'
         @pickeyword = value
