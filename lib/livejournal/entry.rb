@@ -313,7 +313,7 @@ module LiveJournal
         super(user, 'getevents')
         @request['lineendings'] = 'unix'
 
-        @strict = true
+        @strict = false
         @strict = opts[:strict] if opts.has_key? :strict
 
         if opts.has_key? :itemid
