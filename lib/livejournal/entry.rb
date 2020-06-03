@@ -162,6 +162,7 @@ module LiveJournal
         when 'R'; @screening = :anonymous
         when 'F'; @screening = :nonfriends
         when 'N'; @screening = :none
+        when "default"; @screening = :default
         else
           raise "Unknown opt_screening value: #{value.inspect}"
         end
