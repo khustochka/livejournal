@@ -12,7 +12,7 @@ Gem::Specification.new do |s|
   s.require_paths = ["lib".freeze]
   s.authors = ["Evan Martin".freeze, "Roman Shterenzon".freeze, "Vitalii Khustochka".freeze]
   s.date = "2021-03-27"
-  s.description = "LiveJournal API client.  Post to livejournal, retrieve friends lists, edit entries, sync journal to an offline database.".freeze
+  s.description = "LiveJournal API client. Fork of the original livejournal gem. Post to livejournal, retrieve friends lists, edit entries, sync journal to an offline database.".freeze
   s.extra_rdoc_files = [
     "LICENSE",
     "README.md"
