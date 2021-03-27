@@ -1,3 +1,8 @@
+0.4.0: Sat, Mar 27 2021
+- forked version
+- added HTTPS support
+- added support for alternative servers
+
 0.3.7: Fri, Feb 10 2012
 - give_features support (Alexander Logunov)
 

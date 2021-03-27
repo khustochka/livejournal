@@ -5,15 +5,14 @@
 # stub: livejournal 0.3.10 ruby lib
 
 Gem::Specification.new do |s|
-  s.name = "livejournal"
-  s.version = "0.3.10"
-
-  s.required_rubygems_version = Gem::Requirement.new(">= 0") if s.respond_to? :required_rubygems_version=
-  s.require_paths = ["lib"]
-  s.authors = ["Evan Martin", "Roman Shterenzon"]
-  s.date = "2014-04-30"
-  s.description = "LiveJournal module.  Post to livejournal, retrieve friends lists, edit entries, sync journal to an offline database."
-  s.email = "romanbsd@yahoo.com"
+  s.name = "livejournal2".freeze
+  s.version = "0.4.0"
+  s.licenses    = ['MIT']
+  s.required_rubygems_version = Gem::Requirement.new(">= 0".freeze) if s.respond_to? :required_rubygems_version=
+  s.require_paths = ["lib".freeze]
+  s.authors = ["Evan Martin".freeze, "Roman Shterenzon".freeze, "Vitalii Khustochka".freeze]
+  s.date = "2021-03-27"
+  s.description = "LiveJournal API client.  Post to livejournal, retrieve friends lists, edit entries, sync journal to an offline database.".freeze
   s.extra_rdoc_files = [
     "LICENSE",
     "README.md"
@@ -47,8 +46,7 @@ Gem::Specification.new do |s|
     "test/roundtrip.rb",
     "test/time.rb"
   ]
-  s.homepage = "http://neugierig.org/software/livejournal/ruby/"
-  s.rubygems_version = "2.2.2"
-  s.summary = "Module for interacting with livejournal"
+  s.homepage = "https://github.com/khustochka/livejournal2".freeze
+  s.rubygems_version = "3.1.2".freeze
+  s.summary = "Module for interacting with Livejournal API".freeze
 end
-
