@@ -10,8 +10,7 @@ Add to your `Gemfile`:
 
     gem "livejournal2"
 
-(Please note the name of the directory to require is still 
-`livejournal`, not `livejournal2`)
+(Please note you can require `livejournal`, or `livejournal2` - both will work).
 
 ## Example
 
